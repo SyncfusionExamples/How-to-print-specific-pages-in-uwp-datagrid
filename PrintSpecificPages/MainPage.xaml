@@ -1,0 +1,37 @@
+﻿<Page   x:Class="PrintSpecificPages.MainPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="using:PrintSpecificPages"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"    
+        xmlns:syncfusion="using:Syncfusion.UI.Xaml.Grid" >
+    
+    <Page.DataContext>
+        <local:ViewModel />
+    </Page.DataContext>
+    <Grid x:Name="container" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="200"/>
+        </Grid.ColumnDefinitions>
+        <syncfusion:SfDataGrid x:Name="dataGrid"
+                               AllowEditing="True"
+                               FontSize="12"        
+                               LostFocusBehavior="Default"
+                               AutoGenerateColumns="False"
+                               ItemsSource="{Binding Orders}" >
+            <syncfusion:SfDataGrid.Columns>
+                <syncfusion:GridNumericColumn MappingName="OrderID" HeaderText="Order ID" />
+                <syncfusion:GridTextColumn MappingName="CustomerName" HeaderText="Customer Name" TextWrapping="Wrap" VerticalAlignment="Top" />
+                <syncfusion:GridTextColumn MappingName="CustomerID" HeaderText="Customer ID"/>
+                <syncfusion:GridTextColumn MappingName="Country" />
+                <syncfusion:GridTextColumn MappingName="ShipCity" HeaderText="Ship City"/>
+            </syncfusion:SfDataGrid.Columns>
+        </syncfusion:SfDataGrid>
+
+        <StackPanel Grid.Column="1">
+            <Button x:Name="print" Content="Print" Click="Print_Click" Width="150" Height="30" Margin="5" />
+        </StackPanel>
+    </Grid>
+</Page>
