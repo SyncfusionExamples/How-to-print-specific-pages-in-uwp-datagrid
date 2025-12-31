@@ -1,15 +1,13 @@
-# How to print specific pages in UWP DataGrid
+# How to Print Specific Pages in UWP DataGrid?
 
 This example describes how to print specific pages in [UWP DataGrid](https://www.syncfusion.com/uwp-ui-controls/datagrid) (SfDataGrid).
 
-You can print the specific pages by overriding [OnAddPrintPages](https://help.syncfusion.com/cr/uwp/Syncfusion.UI.Xaml.Grid.PrintManagerBase.html#Syncfusion_UI_Xaml_Grid_PrintManagerBase_OnAddPrintPages_Windows_UI_Xaml_Printing_AddPagesEventArgs_) method in `PrintManagerBase` class.
+You can print the specific pages by overriding [OnAddPrintPages](https://help.syncfusion.com/cr/uwp/Syncfusion.UI.Xaml.Grid.PrintManagerBase.html#Syncfusion_UI_Xaml_Grid_PrintManagerBase_OnAddPrintPages_Windows_UI_Xaml_Printing_AddPagesEventArgs_) method in [PrintManagerBase](https://help.syncfusion.com/cr/uwp/Syncfusion.UI.Xaml.Grid.PrintManagerBase.html) class.
 
 ``` csharp
 public class CustomPrintManager : GridPrintManager
 {
-    
-    public CustomPrintManager(SfDataGrid grid)
-        : base(grid)
+    public CustomPrintManager(SfDataGrid grid) : base(grid)
     {
 
     }
@@ -68,3 +66,7 @@ public class CustomPrintManager : GridPrintManager
 dataGrid.PrintSettings.PrintManagerBase = new CustomPrintManager(this.dataGrid);
 dataGrid.PrintSettings.PrintManagerBase.Print();
 ```
+
+![Printing specific pages in the DataGrid](PrintPreview.png)
+
+**Note:** Printing the specific pages in UWP DataGrid support only for the uwp target build version as 17763 or above.
